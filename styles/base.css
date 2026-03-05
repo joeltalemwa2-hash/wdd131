@@ -1,45 +1,51 @@
 body{
-font-family: Arial, sans-serif;
+font-family: Arial, Helvetica, sans-serif;
 margin:0;
-background:#f4f4f4;
+background:#f0f0f0;
 }
 
 header{
-background:#003366;
+background:#1e2a44;
 color:white;
 text-align:center;
-padding:20px;
+padding:10px;
 }
 
 #course-title{
 display:block;
-font-size:1.5rem;
-font-weight:bold;
+font-size:1.4rem;
 margin-bottom:10px;
 }
 
 nav{
 display:flex;
 justify-content:center;
-gap:20px;
+gap:40px;
+background:#2f3d63;
+padding:10px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-padding:8px 12px;
+font-weight:bold;
 }
 
 nav a:hover{
-background:white;
-color:#003366;
-border-radius:5px;
+text-decoration:underline;
 }
 
 main{
 max-width:900px;
 margin:auto;
 padding:20px;
+}
+
+h1{
+text-align:center;
+}
+
+.cards{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:20px;
@@ -47,20 +53,44 @@ gap:20px;
 
 .card{
 background:white;
-padding:15px;
 border-radius:8px;
-box-shadow:0 0 5px rgba(0,0,0,0.1);
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+padding:15px;
 }
 
-.card img{
-width:100%;
+.card h2{
+background:#2f3d63;
+color:white;
+padding:10px;
 border-radius:5px;
 }
 
+.about-content{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.about-content img{
+width:120px;
+border-radius:5px;
+}
+
+.location{
+display:flex;
+gap:15px;
+align-items:center;
+margin-top:10px;
+}
+
+.location img{
+width:80px;
+}
+
 footer{
-text-align:center;
-background:#003366;
+background:#2f3d63;
 color:white;
+text-align:center;
 padding:10px;
 margin-top:20px;
 }
