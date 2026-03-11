@@ -21,19 +21,19 @@ color:white;
 cursor:pointer;
 }
 
-.navigation{
+nav{
 display:flex;
 flex-direction:column;
 background:#1e3a5f;
 }
 
-.navigation a{
+nav a{
 color:white;
 text-decoration:none;
 padding:0.8rem;
 }
 
-.navigation a:hover{
+nav a:hover{
 background:#ffffff33;
 }
 
