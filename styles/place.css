@@ -11,9 +11,11 @@ text-align:center;
 }
 
 header{
-background:rgb(23, 192, 73);
+background:#b23a3a;
 color:white;
 padding:1rem;
+font-size:1.5rem;
+text-align:center;
 }
 
 picture img{
@@ -34,7 +36,8 @@ border-radius:8px;
 }
 
 .weather-icon{
-width:50px;
+width:60px;
+margin:10px auto;
 }
 
 section{
@@ -43,4 +46,38 @@ box-shadow:0 2px 6px rgba(0,0,0,0.2);
 
 p{
 line-height:1.6;
+margin: 5px 0;
+}
+
+.overlay{
+position:static;
+display:flex;
+flex-direction:column;
+gap:1.5rem;
+padding:1rem;
+}
+
+.card{
+background:white;
+padding:1rem;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+width:90%;
+margin:auto;
+}
+
+footer{
+background:#b23a3a;
+color:white;
+text-align:center;
+padding:1rem;
+margin-top:1rem;
+}
+
+.card h2{
+background:#2e6b3e;
+color:white;
+padding:0.5rem;
+border-radius:4px;
+margin-bottom: 0.5rem;
 }

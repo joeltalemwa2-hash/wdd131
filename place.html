@@ -27,32 +27,34 @@
 </header>
 
 <!-- HERO IMAGE (REQUIRED SRCSET) -->
+<section class="hero">
 <picture>
-<source srcset="images/crane.webp" media="(min-width: 768px)">
-<source srcset="images/crane.webp" media="(min-width: 500px)">
+<source srcset="images/crane-large.webp" media="(min-width: 678px)">
+<source srcset="images/crane-medium.webp" media="(min-width: 500px)">
 <img src="images/crane.webp" alt="Uganda Landscape">
 </picture>
 
-<main>
 
-<section class="info">
-<h2>About Uganda</h2>
-<p>Uganda, known as the Pearl of Africa, is famous for its wildlife, lakes, and diverse culture.</p>
-</section>
+<div class="overlay">  
 
-<section class="weather">
+<div class="card data">
+<h2>Data</h2>
+<p>Area: 241,038 km²</p>
+<p>Population: 45M+</p>
+<p>Capital: Kampala</p>
+</div>
+
+<div class="card weather">
 <h2>Weather</h2>
-
-<!-- SVG ICON (MOBILE ONLY) -->
 <img src="images/weather.svg" alt="Weather icon" class="weather-icon">
 
 <p>Temperature: <span id="temp">8</span>°C</p>
 <p>Wind Speed: <span id="speed">10</span> km/h</p>
 <p>Wind Chill: <span id="windchill">9.8</span>°C</p>
-
+</div>
 </section>
 
-</main>
+
 
 <footer>
 
