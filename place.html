@@ -8,8 +8,15 @@
 
 <meta name="description" content="Explore Uganda, the Pearl of Africa, with its rich culture, wildlife, climate, and natural beauty.">
 
+<meta name="author" content="Joel Talemwa">
+
 <link rel="stylesheet" href="styles/place.css">
+<link rel="stylesheet" href="styles/placedesktop.css"
 <script src="scripts/place.js" defer></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 
@@ -21,9 +28,9 @@
 
 <!-- HERO IMAGE (REQUIRED SRCSET) -->
 <picture>
-<source srcset="images/uganda-large.webp" media="(min-width: 768px)">
-<source srcset="images/uganda-medium.webp" media="(min-width: 500px)">
-<img src="images/uganda-small.webp" alt="Uganda Landscape">
+<source srcset="images/crane.webp" media="(min-width: 768px)">
+<source srcset="images/crane.webp" media="(min-width: 500px)">
+<img src="images/crane.webp" alt="Uganda Landscape">
 </picture>
 
 <main>
@@ -41,15 +48,20 @@
 
 <p>Temperature: <span id="temp">8</span>°C</p>
 <p>Wind Speed: <span id="speed">10</span> km/h</p>
-<p>Wind Chill: <span id="windchill"></span></p>
+<p>Wind Chill: <span id="windchill">9.8</span>°C</p>
 
 </section>
 
 </main>
 
 <footer>
-<p>© <span id="year"></span> Joel Talemwa</p>
-<p>Last Modified: <span id="modified"></span></p>
+
+<p>
+© <span id="currentyear"></span> ❄️ Joel Talemwa ❄️ Uganda
+</p>
+
+<p id="lastModified"></p>
+
 </footer>
 
 </body>

@@ -1,0 +1,26 @@
+@media (min-width: 768px){
+
+.weather-icon{
+display:none; /* hide SVG */
+}
+
+/* REQUIRED: pseudo-element weather icon */
+.weather h2::after{
+content:" ⛅";
+}
+
+main{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+}
+
+section{
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+p{
+line-height:1.6;
+}
