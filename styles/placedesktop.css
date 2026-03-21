@@ -1,40 +1,7 @@
 @media (min-width:768px){
 
-/* Position LEFT card */
-.data{
-position:absolute;
-top:20%;
-left:5%;
-}
-
-/* Position RIGHT card */
-.weather{
-position:absolute;
-bottom:15%;
-right:5%;
-}
-
-/* Hide SVG */
-.weather-icon{
-display:none;
-}
-
-/* REQUIRED pseudo-element */
-.weather h2::after{
-content:" ⛅";
-}
-
-}
-
-
 .hero{
 position:relative;
-}
-
-.hero img{
-width:90%;
-height:auto;
-display:block;
 }
 
 .overlay{
@@ -45,10 +12,30 @@ width:100%;
 height:100%;
 }
 
-.card{
-background:white;
-padding:1rem;
-border-radius:8px;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
+/* DATA CARD LEFT */
+.data{
+position:absolute;
+top:20%;
+left:5%;
 width:250px;
+}
+
+/* WEATHER CARD RIGHT */
+.weather{
+position:absolute;
+bottom:15%;
+right:5%;
+width:250px;
+}
+
+/* HIDE SVG */
+.weather-icon{
+display:none;
+}
+
+/* REQUIRED PSEUDO ELEMENT */
+.weather h2::after{
+content:" ⛅";
+}
+
 }

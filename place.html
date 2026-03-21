@@ -5,18 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Uganda Country Page</title>
-
-<meta name="description" content="Explore Uganda, the Pearl of Africa, with its rich culture, wildlife, climate, and natural beauty.">
-
+<meta name="description" content="Explore Uganda, the Pearl of Africa, including its rich culture, data, and weather information.">
 <meta name="author" content="Joel Talemwa">
 
 <link rel="stylesheet" href="styles/place.css">
 <link rel="stylesheet" href="styles/placedesktop.css">
-<script src="scripts/place.js" defer></script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<script src="scripts/place.js" defer></script>
 
 </head>
 
@@ -26,44 +23,48 @@
 <h1>Uganda</h1>
 </header>
 
-<!-- HERO IMAGE (REQUIRED SRCSET) -->
 <section class="hero">
+
+<!-- IMAGE FIRST -->
 <picture>
-<source srcset="images/crane-large.webp" media="(min-width: 678px)">
-<source srcset="images/crane-medium.webp" media="(min-width: 500px)">
-<img src="images/crane.webp" alt="Uganda Landscape">
+  <source srcset="images/crane-large.webp" media="(min-width: 768px)">
+  <source srcset="images/crane-medium.webp" media="(min-width: 500px)">
+  <img src="images/crane.webp" alt="Uganda Landscape">
 </picture>
 
+<div class="overlay">
 
-<div class="overlay">  
+  <!-- DATA -->
+  <div class="card data">
+    <h2>Data</h2>
+    <p>Area: 241,038 km²</p>
+    <p>Population: 45M+</p>
+    <p>Capital: Kampala</p>
+    <p>Languages: English, Luganda</p>
+    <p>Currency: Uganda Shillings</p>
+    <p>Calling Code: +256</p>
+    <p>Internet TLD: .ug</p>
+  </div>
 
-<div class="card data">
-<h2>Data</h2>
-<p>Area: 241,038 km²</p>
-<p>Population: 45M+</p>
-<p>Capital: Kampala</p>
+  <!-- WEATHER -->
+  <div class="card weather">
+    <h2>Weather</h2>
+
+    <!-- SVG (mobile only) -->
+    <img src="images/weather.svg" alt="Weather icon" class="weather-icon">
+
+    <p>Temperature: <span id="temp">8</span>°C</p>
+    <p>Wind Speed: <span id="speed">10</span> km/h</p>
+    <p>Wind Chill: <span id="windchill"></span></p>
+  </div>
+
 </div>
 
-<div class="card weather">
-<h2>Weather</h2>
-<img src="images/weather.svg" alt="Weather icon" class="weather-icon">
-
-<p>Temperature: <span id="temp">8</span>°C</p>
-<p>Wind Speed: <span id="speed">10</span> km/h</p>
-<p>Wind Chill: <span id="windchill">9.8</span>°C</p>
-</div>
 </section>
 
-
-
 <footer>
-
-<p>
-© <span id="currentyear"></span> ❄️ Joel Talemwa ❄️ Uganda
-</p>
-
-<p id="lastModified"></p>
-
+<p>© <span id="year"></span> ❄️ Joel Talemwa ❄️ Uganda</p>
+<p>Last Modified: <span id="modified"></span></p>
 </footer>
 
 </body>
