@@ -1,0 +1,67 @@
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.nav {
+    display: none;
+}
+
+.nav.open {
+    display: block;
+}
+
+.gallery {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+figure {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+}body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.nav {
+    display: none;
+}
+
+.nav.open {
+    display: block;
+}
+
+.gallery {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+figure {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+}

@@ -4,7 +4,7 @@
 display:none;
 }
 
-nav{
+.nav{
 display:flex;
 flex-direction:row;
 gap:20px;
