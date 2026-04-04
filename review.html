@@ -32,27 +32,45 @@
 
 <!-- RATING -->
 <fieldset>
-  <legend>Overall Rating *</legend>
+  <legend>Overall Rating (Required)</legend>
 
-  <label><input type="radio" name="rating" value="1" required> ⭐</label>
-  <label><input type="radio" name="rating" value="2"> ⭐⭐</label>
-  <label><input type="radio" name="rating" value="3"> ⭐⭐⭐</label>
-  <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐</label>
-  <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐</label>
+  <input type="radio" id="star1" name="rating" value="1" required>
+  <label for="star1">☆</label>
+
+  <input type="radio" id="star2" name="rating" value="2" required>
+  <label for="star2">☆☆</label>
+
+  <input type="radio" id="star3" name="rating" value="3" required>
+  <label for="star3">☆☆☆</label>
+
+  <input type="radio" id="star4" name="rating" value="4" required>
+  <label for="star4">☆☆☆☆</label>
+
+  <input type="radio" id="star5" name="rating" value="5" required>
+  <label for="star5">☆☆☆☆☆</label>
+
 </fieldset>
 
 <!-- DATE -->
-<label for="date">Date of Installation *</label>
-<input type="date" id="date" name="date" required>
+<label for="installDate">Date of Installation *</label>
+<input type="date" id="installDate" name="installDate" required>
 
 <!-- FEATURES -->
 <fieldset>
   <legend>Useful Features</legend>
 
-  <label><input type="checkbox" name="features" value="durable"> Durable</label>
-  <label><input type="checkbox" name="features" value="easy"> Easy to Use</label>
-  <label><input type="checkbox" name="features" value="affordable"> Affordable</label>
-  <label><input type="checkbox" name="features" value="efficient"> Efficient</label>
+  <input type="checkbox" id="feature1" name="features" value="durability">
+  <label for="feature1">Durability</label>
+
+  <input type="checkbox" id="feature2" name="features" value="performance">
+  <label for="feature2">Performance</label>
+
+  <input type="checkbox" id="feature3" name="features" value="design">
+  <label for="feature3">Design</label>
+
+  <input type="checkbox" id="feature4" name="features" value="value">
+  <label for="feature4">Value for Money</label>
+
 </fieldset>
 
 <!-- REVIEW -->
@@ -71,7 +89,7 @@
 </main>
 
 <footer>
-  <p>© <span id="year"></span> Joel Talemwa</p>
+  <p>© <span id="year"></span> Joel Talemwa 🌍 Uganda</p>
   <p id="lastModified"></p>
 </footer>
 
