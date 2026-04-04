@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Review</title>
+
+<meta name="description" content="Submit a product review form with ratings and feedback.">
+<meta name="author" content="Joel Talemwa">
+
+<link rel="stylesheet" href="styles/form.css">
+
+<script src="scripts/form.js" defer></script>
+</head>
+
+<body>
+
+<header>
+  <h1>Product Review</h1>
+</header>
+
+<main>
+
+<form method="get" action="review.html">
+
+<!-- PRODUCT -->
+<label for="product">Product Name *</label>
+<select id="product" name="product" required>
+  <option value="" disabled selected>Select a Product ...</option>
+</select>
+
+<!-- RATING -->
+<fieldset>
+  <legend>Overall Rating *</legend>
+
+  <label><input type="radio" name="rating" value="1" required> ⭐</label>
+  <label><input type="radio" name="rating" value="2"> ⭐⭐</label>
+  <label><input type="radio" name="rating" value="3"> ⭐⭐⭐</label>
+  <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐</label>
+  <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐</label>
+</fieldset>
+
+<!-- DATE -->
+<label for="date">Date of Installation *</label>
+<input type="date" id="date" name="date" required>
+
+<!-- FEATURES -->
+<fieldset>
+  <legend>Useful Features</legend>
+
+  <label><input type="checkbox" name="features" value="durable"> Durable</label>
+  <label><input type="checkbox" name="features" value="easy"> Easy to Use</label>
+  <label><input type="checkbox" name="features" value="affordable"> Affordable</label>
+  <label><input type="checkbox" name="features" value="efficient"> Efficient</label>
+</fieldset>
+
+<!-- REVIEW -->
+<label for="review">Written Review</label>
+<textarea id="review" name="review"></textarea>
+
+<!-- NAME -->
+<label for="username">Your Name</label>
+<input type="text" id="username" name="username">
+
+<!-- SUBMIT -->
+<input type="submit" value="Submit Review">
+
+</form>
+
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Joel Talemwa</p>
+  <p id="lastModified"></p>
+</footer>
+
+</body>
+</html>

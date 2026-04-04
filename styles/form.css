@@ -1,0 +1,70 @@
+:root {
+  --primary: #1e3a8a;
+  --accent: #16a34a;
+  --bg: #f1f5f9;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+main {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, select, textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+input[type="submit"] {
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.7rem;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--primary);
+  color: white;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  main {
+    max-width: 800px;
+  }
+}
