@@ -1,0 +1,58 @@
+:root {
+  --primary: #2c7be5;
+  --light: #f4f4f4;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--light);
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 1rem;
+}
+
+nav {
+  display: none;
+  flex-direction: column;
+}
+
+nav.open {
+  display: flex;
+}
+
+nav a {
+  color: white;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: #1a5bb8;
+}
+
+@media (min-width: 768px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #menu {
+    display: none;
+  }
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
