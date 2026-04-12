@@ -1,35 +1,48 @@
-// Dynamic tagline
-document.getElementById("tagline").textContent =
-  "Helping students build smart money habits 💡";
-
-// Scenario list (ARRAY + DOM)
-const scenarios = [
-  "How can I budget my small monthly allowance?",
-  "What is the best way to save money as a student?"
-];
-
-const scenarioList = document.getElementById("scenarioList");
-
-scenarios.forEach(item => {
-  const li = document.createElement("li");
-  li.textContent = item;
-  scenarioList.appendChild(li);
-});
-
-// Money tips (EVENT + ARRAY + FUNCTION)
-const tips = [
-  "Track your expenses daily.",
-  "Save at least 10% of your income.",
-  "Avoid unnecessary spending.",
-  "Plan before you buy."
-];
-
-document.getElementById("tipBtn").addEventListener("click", () => {
-  const random = tips[Math.floor(Math.random() * tips.length)];
-  document.getElementById("tipDisplay").textContent = random;
-});
-
-// Footer dynamic data
+// FOOTER
 document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("lastModified").textContent =
-  "Last Modified: " + document.lastModified;
+document.getElementById("lastModified").textContent = document.lastModified;
+
+// MENU
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
+
+if (menu) {
+  menu.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+}
+
+// ARRAY + OBJECTS
+const tips = [
+  { title: "Save First", desc: "Always save before spending." },
+  { title: "Track Expenses", desc: "Monitor your spending habits." },
+  { title: "Avoid Debt", desc: "Limit unnecessary borrowing." }
+];
+
+// FUNCTION + DOM
+function displayTips() {
+  const container = document.querySelector(".cards");
+  if (!container) return;
+
+  container.innerHTML = tips.map(tip => `
+    <div>
+      <h3>${tip.title}</h3>
+      <p>${tip.desc}</p>
+    </div>
+  `).join("");
+}
+
+displayTips();
+
+// LOCAL STORAGE
+let count = localStorage.getItem("reviews") || 0;
+
+if (window.location.pathname.includes("review.html")) {
+  count++;
+  localStorage.setItem("reviews", count);
+
+  const counter = document.getElementById("counter");
+  if (counter) {
+    counter.textContent = `${count}`;
+  }
+}

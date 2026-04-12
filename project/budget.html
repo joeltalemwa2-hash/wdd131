@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Money Tips</title>
+<title>Budget Planner</title>
 
 <meta name="description" content="Learn smart money management, saving, and budgeting tips for students in Uganda.">
 <meta name="author" content="Joel Talemwa">
@@ -16,8 +16,8 @@
 <body>
 
 <header>
-  <h1>SmartStudent Money Tips</h1>
-  <button id="menu">☰</button>
+<h2>💰 SmartStudent </h2>
+<button id="menu">☰</button>
 
   <nav id="nav">
     <a href="index.html">Home</a>
@@ -29,8 +29,22 @@
 
 <main>
 
-<h2>Top Tips</h2>
-<ul id="tipsList"></ul>
+<h1>📋 Budget Planner</h1>
+
+<form id="budgetForm">
+
+<label for="income">Monthly Income *</label>
+<input type="number" id="income" required>
+
+<label for="expenses">Expenses *</label>
+<input type="number" id="expenses" required>
+
+<button type="submit">Save Budget</button>
+
+</form>
+
+<h2>Saved Budgets</h2>
+<ul id="savedBudgets"></ul>
 
 </main>
 

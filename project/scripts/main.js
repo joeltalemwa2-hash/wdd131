@@ -1,48 +1,74 @@
-// FOOTER
-document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("lastModified").textContent = document.lastModified;
-
 // MENU
-const menu = document.getElementById("menu");
-const nav = document.getElementById("nav");
+const menuBtn = document.querySelector("#menu");
+const nav = document.querySelector("#nav");
 
-if (menu) {
-  menu.addEventListener("click", () => {
+if (menuBtn) {
+  menuBtn.addEventListener("click", () => {
     nav.classList.toggle("open");
   });
 }
 
-// ARRAY + OBJECTS
+// TIPS ARRAY
 const tips = [
-  { title: "Save First", desc: "Always save before spending." },
-  { title: "Track Expenses", desc: "Monitor your spending habits." },
-  { title: "Avoid Debt", desc: "Limit unnecessary borrowing." }
+  "Save at least 10% of your income",
+  "Avoid unnecessary spending",
+  "Track your expenses",
+  "Use a budget",
+  "Invest early"
 ];
 
-// FUNCTION + DOM
-function displayTips() {
-  const container = document.querySelector(".cards");
-  if (!container) return;
+// RANDOM TIP
+const tipBtn = document.querySelector("#tipBtn");
+const tipDisplay = document.querySelector("#tipDisplay");
 
-  container.innerHTML = tips.map(tip => `
-    <div>
-      <h3>${tip.title}</h3>
-      <p>${tip.desc}</p>
-    </div>
-  `).join("");
+if (tipBtn) {
+  tipBtn.addEventListener("click", () => {
+    const random = Math.floor(Math.random() * tips.length);
+    tipDisplay.textContent = `${tips[random]}`;
+  });
 }
 
-displayTips();
+// LOAD TIPS PAGE
+const tipsList = document.querySelector("#tipsList");
 
-// LOCAL STORAGE
-let count = localStorage.getItem("reviews") || 0;
+if (tipsList) {
+  tips.forEach(tip => {
+    const li = document.createElement("li");
+    li.textContent = `${tip}`;
+    tipsList.appendChild(li);
+  });
+}
 
-if (window.location.pathname.includes("review.html")) {
-  count++;
-  localStorage.setItem("reviews", count);
+// BUDGET FORM
+const form = document.querySelector("#budgetForm");
 
-  const counter = document.getElementById("counter");
-  if (counter) {
-    counter.textContent = `${count}`;
-  }
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const income = document.querySelector("#income").value;
+    const expenses = document.querySelector("#expenses").value;
+
+    const balance = income - expenses;
+
+    const result = document.querySelector("#result");
+
+    if (balance > 0) {
+      result.textContent = `You saved ${balance}`;
+    } else {
+      result.textContent = `You overspent ${Math.abs(balance)}`;
+    }
+
+    localStorage.setItem("balance", balance);
+  });
+}
+
+// FOOTER
+document.querySelectorAll("#year").forEach(el => {
+  el.textContent = new Date().getFullYear();
+});
+
+const lastModified = document.querySelector("#lastModified");
+if (lastModified) {
+  lastModified.textContent = `Last Modified: ${document.lastModified}`;
 }

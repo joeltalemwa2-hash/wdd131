@@ -34,6 +34,13 @@ nav a:hover {
   background: #1a5bb8;
 }
 
+/* IMAGE */
+img{
+width:100%;
+height:auto;
+display:block;
+}
+
 @media (min-width: 768px) {
   nav {
     display: flex;
@@ -49,6 +56,14 @@ nav a:hover {
   display: grid;
   gap: 1rem;
   padding: 1rem;
+}
+
+footer{
+background:#2f3d63;
+color:white;
+text-align:center;
+padding:10px;
+margin-top:20px;
 }
 
 @media (min-width: 768px) {

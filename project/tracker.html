@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Savings Tracker</title>
+
+<meta name="description" content="Track your savings growth as a student.">
+<meta name="author" content="Joel Talemwa">
+
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header>
+<h2>💰 SmartMoney</h2>
+<nav>
+<a href="index.html">Home</a>
+<a href="budget.html">Budget</a>
+<a href="tracker.html">Tracker</a>
+</nav>
+</header>
+
+<main>
+
+<h1>📈 Savings Tracker</h1>
+
+<div class="tracker">
+
+<p>Total Saved: <span id="savedAmount">0</span></p>
+
+<label for="saveInput">Add Savings</label>
+<input type="number" id="saveInput">
+
+<button onclick="addSavings()">Add</button>
+
+</div>
+
+</main>
+
+<footer>
+<p>© <span id="year"></span> Joel Talemwa</p>
+</footer>
+
+</body>
+</html>
