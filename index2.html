@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Joel Talemwa | WDD 131 Dynamic Web Fundamentals</title>
+<meta name="author" content="Joel Talemwa" />
+<meta name="description" content="WDD 131 – Dynamic Web Fundamentals. Joel Talemwa's course home page, built with HTML, CSS, and JavaScript, with a look at Masaka, Uganda." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23F4762B' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232B1252'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* =========================================================
+   Joel Talemwa — WDD 131 Home Page
+   Theme: "Dynamic spark" — deep violet + live-wire orange,
+   a rotating gradient ring, and code-comment style labels.
+   Deliberately distinct from the WDD 130 course page.
+   ========================================================= */
+
+:root {
+  /* ---- Color tokens ---- */
+  --ink:          #1E1033;
+  --violet:       #2B1252;
+  --violet-deep:  #170A2C;
+  --cream:        #FBF6EF;
+  --cream-soft:   #F4E7D8;
+  --orange:       #F4762B;
+  --orange-soft:  #FDB874;
+
+  /* ---- Type ---- */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4.5rem;
+  --space-7: 6rem;
+
+  /* ---- Shape & shadow: crisper / more technical than WDD 130 ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-soft: 0 20px 50px -22px rgba(23, 10, 44, 0.5);
+  --shadow-lift: 0 12px 26px -12px rgba(23, 10, 44, 0.4);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ========================= Reset ========================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+h1, h2, h3, p, dl, dd { margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+
+/* ========================= Layout ========================= */
+.wrap { width: min(1120px, 100% - 3rem); margin-inline: auto; }
+
+/* ===================== Eyebrows (code-comment style) ===================== */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: var(--space-2);
+}
+.eyebrow::before { content: "// "; color: var(--orange); }
+.eyebrow-light { color: var(--orange-soft); }
+.eyebrow-light::before { color: var(--orange); }
+
+/* ========================= Buttons ========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid transparent;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+.btn-primary { background: var(--orange); color: var(--violet-deep); }
+.btn-primary:hover { background: var(--orange-soft); transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+.btn-ghost { background: transparent; color: var(--cream); border-color: rgba(251, 246, 239, 0.4); }
+.btn-ghost:hover { border-color: var(--orange-soft); color: var(--orange-soft); transform: translateY(-2px); }
+
+/* ========================= Header ========================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 246, 239, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30, 16, 51, 0.08);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 1.1rem; }
+.logo { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--violet); }
+.logo span { color: var(--orange); }
+
+.primary-nav ul { display: flex; align-items: center; gap: var(--space-4); }
+.primary-nav a { font-weight: 500; font-size: 0.95rem; position: relative; padding-bottom: 4px; }
+.primary-nav li:not(:last-child) a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--orange);
+  transition: width 0.25s var(--ease);
+}
+.primary-nav li:not(:last-child) a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--violet);
+  color: var(--cream) !important;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.nav-cta:hover { background: var(--orange); color: var(--violet-deep) !important; transform: translateY(-1px); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.nav-toggle span { width: 100%; height: 2px; background: var(--violet); transition: transform 0.25s var(--ease), opacity 0.25s var(--ease); }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ========================= Hero ========================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 55% at 88% 10%, rgba(244, 118, 43, 0.38), transparent 70%),
+    radial-gradient(75% 75% at 8% 105%, rgba(253, 184, 116, 0.16), transparent 70%),
+    linear-gradient(160deg, var(--violet) 0%, var(--violet-deep) 100%);
+  color: var(--cream);
+  padding-block: var(--space-7) var(--space-6);
+}
+.hero::after {
+  /* faint diagonal energy lines, purely decorative */
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: repeating-linear-gradient(115deg, rgba(251, 246, 239, 0.05) 0px, rgba(251, 246, 239, 0.05) 1px, transparent 1px, transparent 42px);
+  pointer-events: none;
+}
+.hero-inner { position: relative; display: grid; gap: var(--space-6); align-items: center; }
+.hero-text h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  line-height: 1.05;
+  margin-bottom: var(--space-3);
+}
+.hero-lede {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2.3vw, 1.35rem);
+  color: var(--orange-soft);
+  max-width: 38ch;
+  margin-bottom: var(--space-2);
+}
+.hero-sub { color: rgba(251, 246, 239, 0.8); max-width: 46ch; margin-bottom: var(--space-4); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.hero-portrait { display: flex; justify-content: center; }
+.portrait-frame { position: relative; width: min(280px, 62vw); aspect-ratio: 1; }
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--cream);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  z-index: 2;
+}
+.portrait-frame::before {
+  /* a soft two-tone arc, like a subtle loading spinner — a nod to "dynamic" JS */
+  content: "";
+  position: absolute;
+  top: -16px; left: -16px;
+  width: calc(100% + 18px);
+  height: calc(100% + 18px);
+  border: 3px solid rgba(244, 118, 43, 0.2);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  z-index: 1;
+  animation: spin 10s linear infinite;
+}
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  bottom: -8px; right: -12px;
+  width: 16px;
+  height: 16px;
+  background: var(--violet);
+  border: 2px solid var(--orange-soft);
+  border-radius: 50%;
+  z-index: 3;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ========================= About ========================= */
+.about { padding-block: var(--space-7); }
+.about h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  max-width: 20ch;
+  margin-bottom: var(--space-4);
+}
+.about-grid { display: grid; gap: var(--space-3); max-width: 68ch; color: rgba(30, 16, 51, 0.85); margin-bottom: var(--space-5); }
+
+.facts { display: grid; gap: var(--space-3); border-top: 2px solid var(--cream-soft); padding-top: var(--space-4); }
+.fact dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.35rem;
+}
+.fact dd { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--violet); }
+
+/* ========================= Uganda / Masaka ========================= */
+.uganda {
+  background: linear-gradient(160deg, var(--violet) 0%, var(--violet-deep) 100%);
+  color: var(--cream);
+  padding-block: var(--space-7);
+}
+.uganda-inner { display: grid; gap: var(--space-5); align-items: center; }
+.uganda-text h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4.5vw, 2.9rem);
+  margin-bottom: var(--space-3);
+}
+.uganda-text p { color: rgba(251, 246, 239, 0.85); margin-bottom: var(--space-2); max-width: 52ch; }
+.coords { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--orange-soft); margin-top: var(--space-3); }
+
+.flag-card {
+  margin: 0;
+  justify-self: center;
+  background: var(--cream);
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border-bottom: 4px solid var(--orange);
+  width: min(320px, 80vw);
+}
+.flag-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-sm); }
+.flag-card figcaption { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); text-align: center; margin-top: var(--space-1); }
+
+/* ========================= Resources ========================= */
+.resources { padding-block: var(--space-7); }
+.resources h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  max-width: 22ch;
+  margin-bottom: var(--space-4);
+}
+.resource-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.resource-card {
+  background: var(--cream-soft);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--orange);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); border-color: var(--violet); }
+.resource-card a { display: block; padding: var(--space-3); height: 100%; }
+.resource-index { font-family: var(--font-mono); font-size: 0.75rem; color: var(--orange); display: block; margin-bottom: 0.5rem; }
+.resource-name { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--violet); margin-bottom: 0.4rem; }
+.resource-desc { display: block; font-size: 0.9rem; color: rgba(30, 16, 51, 0.72); }
+
+/* ========================= Footer ========================= */
+.site-footer { background: var(--violet-deep); color: rgba(251, 246, 239, 0.75); padding-block: var(--space-5); }
+.footer-inner { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: space-between; align-items: flex-end; }
+.footer-word { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--cream); margin-bottom: 0.3rem; }
+.footer-tagline { font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: var(--space-2); }
+.footer-links { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.footer-links a { font-size: 0.85rem; color: var(--orange-soft); border-bottom: 1px solid transparent; transition: border-color 0.25s var(--ease); }
+.footer-links a:hover { border-color: var(--orange-soft); }
+.footer-meta { text-align: right; }
+.footer-copy { font-size: 0.85rem; margin-bottom: 0.4rem; }
+.back-to-top {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange-soft);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease);
+}
+.back-to-top:hover { border-color: var(--orange-soft); }
+
+/* ==================== Scroll reveal ====================
+   Visible by default so the page works with no JS / if the
+   script fails — JS only opts elements into the hidden
+   "pre-reveal" state once it can also bring them back. */
+.reveal { transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.pre-reveal { opacity: 0; transform: translateY(18px); }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+/* ==================== Accessibility ==================== */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--orange);
+  color: var(--violet-deep);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  z-index: 100;
+  font-weight: 600;
+}
+.skip-link:focus { left: var(--space-2); top: var(--space-2); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .portrait-frame::before { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ========================= Responsive ========================= */
+@media (min-width: 700px) {
+  .hero-inner { grid-template-columns: 1.3fr 1fr; }
+  .hero-portrait { justify-content: flex-end; }
+  .facts { grid-template-columns: repeat(3, 1fr); }
+  .uganda-inner { grid-template-columns: 1.4fr 1fr; }
+}
+
+@media (max-width: 699px) {
+  .nav-toggle { display: flex; }
+  .primary-nav {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--cream);
+    border-bottom: 1px solid rgba(30, 16, 51, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s var(--ease);
+  }
+  .primary-nav.open { max-height: 280px; }
+  .primary-nav ul { flex-direction: column; align-items: flex-start; padding: var(--space-3) var(--space-2); gap: var(--space-2); }
+  .nav-cta { margin-top: var(--space-1); }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-meta { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#home">Joel<span>.</span>Talemwa</a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#uganda">Uganda</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <!-- Final Project points at your project deliverable -->
+        <li><a class="nav-cta" href="https://joeltalemwa2-hash.github.io/wdd131/project2/index.html">Final Project ↗</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text reveal">
+        <p class="eyebrow">WDD 131 &middot; Dynamic Web Fundamentals &middot; BYU&ndash;Idaho</p>
+        <h1>Joel Talemwa</h1>
+        <p class="hero-lede">Studying software development in Masaka, Uganda &mdash; and learning to build the web, one dynamic project at a time.</p>
+        <p class="hero-sub">I&rsquo;m currently studying Software Development, picking up HTML, CSS, and JavaScript along the way. I enjoy technology, programming, and building digital things that actually help people.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about">About me</a>
+          <a class="btn btn-ghost" href="https://joeltalemwa2-hash.github.io/wdd131/project2/index.html">Final Project ↗</a>
+        </div>
+      </div>
+
+      <div class="hero-portrait reveal">
+        <div class="portrait-frame">
+          <img src="images/joeltalemwa.jpeg" alt="Photo of Joel Talemwa" width="480" height="480" loading="eager" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <p class="eyebrow reveal">About</p>
+      <h2 class="reveal">Learning to make pages that do more than sit still</h2>
+
+      <div class="about-grid reveal">
+        <p>My name is Joel Talemwa, and I live in Uganda. This page is part of WDD 131: Dynamic Web Fundamentals at BYU&ndash;Idaho, where I&rsquo;m building on last term&rsquo;s HTML and CSS by bringing JavaScript into the mix.</p>
+        <p>I enjoy technology and programming, and I like building small digital things that are actually useful to the people who use them.</p>
+      </div>
+
+      <dl class="facts reveal">
+        <div class="fact">
+          <dt>Course</dt>
+          <dd>WDD 131 &mdash; Dynamic Web Fundamentals</dd>
+        </div>
+        <div class="fact">
+          <dt>Institution</dt>
+          <dd>BYU&ndash;Idaho</dd>
+        </div>
+        <div class="fact">
+          <dt>Focus</dt>
+          <dd>HTML, CSS &amp; JavaScript</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ UGANDA / MASAKA ============ -->
+  <section id="uganda" class="uganda">
+    <div class="wrap uganda-inner">
+      <div class="uganda-text reveal">
+        <p class="eyebrow eyebrow-light">The Pearl of Africa</p>
+        <h2>Masaka, Uganda</h2>
+        <p>Uganda sits in East Africa and carries a well-earned nickname: the Pearl of Africa. It&rsquo;s a country of striking landscapes, rich wildlife, and dozens of cultures side by side &mdash; and it&rsquo;s where the River Nile begins its journey north.</p>
+        <p class="coords">0&deg;20&prime; S, 31&deg;44&prime; E &mdash; Masaka, Uganda</p>
+      </div>
+
+      <figure class="flag-card reveal">
+        <img src="images/flag.jpg" alt="The flag of Uganda" loading="lazy" />
+        <figcaption>The Uganda flag</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ RESOURCES ============ -->
+  <section id="resources" class="resources">
+    <div class="wrap">
+      <p class="eyebrow reveal">Web Dev Resources</p>
+      <h2 class="reveal">Sites I keep coming back to</h2>
+
+      <ul class="resource-grid reveal">
+        <li class="resource-card">
+          <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-index">[0]</span>
+            <span class="resource-name">MDN Web Docs ↗</span>
+            <span class="resource-desc">The standard reference for HTML, CSS, and JavaScript.</span>
+          </a>
+        </li>
+        <li class="resource-card">
+          <a href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-index">[1]</span>
+            <span class="resource-name">Smashing Magazine ↗</span>
+            <span class="resource-desc">Articles and deep dives on frontend design and development.</span>
+          </a>
+        </li>
+        <li class="resource-card">
+          <a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-index">[2]</span>
+            <span class="resource-name">CSS-Tricks ↗</span>
+            <span class="resource-desc">Practical tips, guides, and an almanac of CSS properties.</span>
+          </a>
+        </li>
+        <li class="resource-card">
+          <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-index">[3]</span>
+            <span class="resource-name">W3Schools ↗</span>
+            <span class="resource-desc">Beginner-friendly tutorials with try-it-yourself examples.</span>
+          </a>
+        </li>
+        <li class="resource-card">
+          <a href="https://www.udemy.com/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-index">[4]</span>
+            <span class="resource-name">Udemy ↗</span>
+            <span class="resource-desc">Video courses covering just about every corner of web development.</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-word">Joel Talemwa</p>
+      <p class="footer-tagline">WDD 131 &middot; Dynamic Web Fundamentals &middot; BYU&ndash;Idaho</p>
+
+      <!-- Personal links — swap these placeholder URLs for your own profiles -->
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://byupw.instructure.com" target="_blank" rel="noopener noreferrer">Canvas</a></li>
+        <li><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3?lang=eng&id=p7#p7" target="_blank" rel="noopener noreferrer">Scripture</a></li>
+      </ul>
+    </div>
+    <div class="footer-meta">
+      <p class="footer-copy">&copy; Joel Talemwa &#127757; Uganda</p>
+      <a class="back-to-top" href="#home">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// Joel Talemwa — WDD 131 Home Page
+// Small, dependency-free enhancements: mobile nav toggle
+// and a subtle scroll-reveal for content sections.
+// ============================================================
+
+// ---- Mobile navigation toggle ----
+const navToggle = document.getElementById("navToggle");
+const primaryNav = document.getElementById("primaryNav");
+
+if (navToggle && primaryNav) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = primaryNav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Close the mobile menu after a nav link is tapped
+  primaryNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      primaryNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+// ---- Scroll reveal (skips animation if the user prefers reduced motion) ----
+// Content is visible by default in the CSS. Only once we know we can both
+// hide *and* reveal an element do we opt it into the animated state —
+// this keeps the page fully readable if JS is disabled or fails to run.
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealEls = document.querySelectorAll(".reveal");
+
+if (!prefersReducedMotion && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          entry.target.classList.remove("pre-reveal");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  revealEls.forEach((el) => {
+    el.classList.add("pre-reveal");
+    observer.observe(el);
+  });
+}
+// If reduced motion is on, or IntersectionObserver isn't supported,
+// elements simply stay at their default visible state — no action needed.
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Budget Tool | SmartMoney UG</title>
+<meta name="author" content="Joel Talemwa" />
+<meta name="description" content="Submit your monthly income, expenses, and saving habits for a quick budget review." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2314213D'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%237ED957' font-family='sans-serif'%3E%24%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html">Smart<span class="accent">Money</span><span class="tag">UG</span></a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tips.html">Tips</a></li>
+        <li><a href="form.html" class="active" aria-current="page">Budget Tool</a></li>
+        <li><a href="budget.html">Budget Planner</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow on-dark">Budget review</p>
+      <h1>How&rsquo;s your budget doing?</h1>
+      <p>Fill in a few numbers and get an instant, honest read on where you stand.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap form-layout">
+
+      <form class="form-card reveal" id="budgetForm" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Joel" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="income">Monthly income (UGX) <span class="req">*</span></label>
+          <input type="number" id="income" name="income" min="0" step="1000" placeholder="e.g. 350000" required />
+        </div>
+
+        <div class="field">
+          <label for="expenses">Monthly expenses (UGX) <span class="req">*</span></label>
+          <input type="number" id="expenses" name="expenses" min="0" step="1000" placeholder="e.g. 280000" required />
+        </div>
+
+        <fieldset class="field">
+          <legend>Saving habit <span class="req">*</span></legend>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="habit" value="good" required />
+              <span>Good</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="habit" value="average" />
+              <span>Average</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="habit" value="poor" />
+              <span>Poor</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary btn-block">Review my budget</button>
+      </form>
+
+      <div class="results-panel reveal" id="resultsPanel" aria-live="polite">
+        <p class="results-empty" id="resultsEmpty">Fill out the form and submit it to see your results here.</p>
+
+        <div class="results-body" id="resultsBody">
+          <p class="results-greeting" id="resultsGreeting">Here&rsquo;s how you&rsquo;re doing</p>
+
+          <span class="status-badge" id="statusBadge"></span>
+
+          <dl class="results-figures">
+            <div class="results-figure">
+              <dt>Income</dt>
+              <dd id="resultIncome">&mdash;</dd>
+            </div>
+            <div class="results-figure">
+              <dt>Expenses</dt>
+              <dd id="resultExpenses">&mdash;</dd>
+            </div>
+            <div class="results-figure">
+              <dt>Balance</dt>
+              <dd id="resultBalance">&mdash;</dd>
+            </div>
+            <div class="results-figure">
+              <dt>Savings rate</dt>
+              <dd id="resultRate">&mdash;</dd>
+            </div>
+          </dl>
+
+          <p class="results-message" id="resultsMessage"></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="footer-word">SmartMoney UG</span>
+    <div class="footer-links">
+      <a href="https://joeltalemwa2-hash.github.io/wdd131/index.html" target="_blank" rel="noopener noreferrer">Part of Joel Talemwa&rsquo;s WDD 131 project ↗</a>
+    </div>
+    <span class="footer-copy">&copy; Joel Talemwa &#127757; Uganda</span>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script src="form.js"></script>
+</body>
+</html>
